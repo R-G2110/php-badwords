@@ -1,8 +1,12 @@
 <?php 
 
-$text = isset($_GET['text']) ? $_GET['text'] : "NO Text";
+$text = $_GET['text'] ?? "NO Text";
 $badWord = trim($_GET['bad-word'], "") ?? 'No Bad word';
-$censoredText = ucfirst(str_replace(strtolower($badWord), '***', strtolower($text)));
+$censoredText = $_GET['bad-word'] 
+								? ucfirst(str_replace(strtolower($badWord), '***', strtolower($text)))
+								: $text;
+
+// if ()ucfirst(str_replace(strtolower($badWord), '***', strtolower($text)));
 
 ?>
 
